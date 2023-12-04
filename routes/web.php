@@ -51,7 +51,27 @@ Route::get('/tasks', function (){
 });
 
 
-Route::get('/users', [UserControllers::class,'index']);
+Route::get('/users', function (){
+    $user1 = new stdClass();
+    $user1->id =1;
+    $user1->name = "Oriol Marine Sevilla";
+    $user1->email = "oriolmarine12@gmail.com";
+    $user1->password="contrasenya1";
+    $user2= new stdClass();
+    $user2->id = 2;
+    $user2->name="Jordi Vega";
+    $user2->email= "jordi@gmail.com";
+    $user2->password=1;
+
+    $users=[
+        $user1,
+        $user2
+    ];
+
+    return view('users',[
+        'users'=> $users
+    ]);
+});
 
 Route::get('/contact', [PagesController::class,'contact']);
 
